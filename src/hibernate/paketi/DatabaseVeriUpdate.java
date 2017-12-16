@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 public class DatabaseVeriUpdate {
     public  static void databaseUpdate(HavaDurumu havaDurumu)
     {
-        SessionFactory sessionFactory= hibernate.paketi.SessionFactorySingleton.getSessionFactory();
+        SessionFactory sessionFactory= HavaDurumuSessionFactorySingleton.getSessionFactory();
 
         Session session=sessionFactory.getCurrentSession();
 
@@ -17,12 +17,13 @@ public class DatabaseVeriUpdate {
 
             session.beginTransaction();
 
-            session.createQuery("update HavaDurumu  set durum=?, sicaklik=?, basinc=?, nem_orani=? where sehir=?")
+            session.createQuery("update HavaDurumu  set durum=?, sicaklik=?, basinc=?, nem_orani=?,zaman=? where sehir=?")
                     .setParameter(0,havaDurumu.getDurum())
                     .setParameter(1,havaDurumu.getSicaklik())
                     .setParameter(2,havaDurumu.getBasinc())
                     .setParameter(3,havaDurumu.getNem_orani())
-                    .setParameter(4,havaDurumu.getSehir())
+                    .setParameter(4,havaDurumu.getZaman())
+                    .setParameter(5,havaDurumu.getSehir())
                     .executeUpdate();
 
 

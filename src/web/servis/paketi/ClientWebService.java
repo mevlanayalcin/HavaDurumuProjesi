@@ -15,48 +15,69 @@ public class ClientWebService
 {
     public static HavaDurumu webServistenVeriCek(String sehirAdi) throws ParseException {
         Client client= ClientBuilder.newClient();
-        WebTarget target=client.target("http://api.openweathermap.org/data/2.5/weather?q="+sehirAdi+"&units=metric&APPID=1e1d2819dea94babccbc342ad75b5b97");
-
+        WebTarget target=client.target("http://api.worldweatheronline.com/premium/v1/weather.ashx?key=64a123cdad96489f9df213312171312&q=" + sehirAdi + "&format=json");
 
         JSONParser jsonParser = new JSONParser();
         JSONObject anaObject = (JSONObject) jsonParser.parse(target.request(MediaType.APPLICATION_JSON).get(String.class) );
-        JSONObject mainObject=(JSONObject) anaObject.get("main");
+        JSONObject dataObject=(JSONObject) anaObject.get("data");
 
-        JSONArray weatherDizi=(JSONArray)anaObject.get("weather");
-        JSONObject weather0Objesi=(JSONObject) weatherDizi.get(0);
+        JSONArray current_conditionDizisi=(JSONArray)dataObject.get("current_condition");
+        JSONObject current_conditionDizisiSifirinciTerimObjesi=(JSONObject)current_conditionDizisi.get(0);
+
+
+        String cekilenSaat=(String)current_conditionDizisiSifirinciTerimObjesi.get("observation_time");
 
         long sicaklik=0;
         double sicak=0.0;
-        if(mainObject.get("temp") instanceof Double)
+        if(current_conditionDizisiSifirinciTerimObjesi.get("temp_C") instanceof Double)
         {
-            sicak=(Double)mainObject.get("temp");
+            sicak=(Double)current_conditionDizisiSifirinciTerimObjesi.get("temp_C");
             sicaklik=(long)sicak;
         }
-        if(mainObject.get("temp") instanceof Long)
+        if(current_conditionDizisiSifirinciTerimObjesi.get("temp_C") instanceof Long)
         {
-            sicaklik = (long) mainObject.get("temp");
+            sicaklik = (long) current_conditionDizisiSifirinciTerimObjesi.get("temp_C");
         }
+        else
+        {
+            String sicakkk=(String)current_conditionDizisiSifirinciTerimObjesi.get("temp_C");
+            sicaklik=Long.parseLong(sicakkk);
+        }
+
 
         long basinc=0;
         double basin=0.0;
-        if(mainObject.get("pressure") instanceof Double)
+        if(current_conditionDizisiSifirinciTerimObjesi.get("pressure") instanceof Double)
         {
-            basin=(Double)mainObject.get("pressure");
+            basin=(Double)current_conditionDizisiSifirinciTerimObjesi.get("pressure");
             basinc=(long)basin;
         }
-        if(mainObject.get("pressure") instanceof Long)
+        if(current_conditionDizisiSifirinciTerimObjesi.get("pressure") instanceof Long)
         {
-            basinc = (long) mainObject.get("pressure");
+            basinc = (long) current_conditionDizisiSifirinciTerimObjesi.get("pressure");
+        }
+        else
+        {
+            String press=(String)current_conditionDizisiSifirinciTerimObjesi.get("pressure");
+            basinc=Long.parseLong(press);
         }
 
-
-        long nem=(long)mainObject.get("humidity");
-        String sehir=(String)anaObject.get("name");
-        String havaDurumu=(String)weather0Objesi.get("description");
+        String nem1=(String)current_conditionDizisiSifirinciTerimObjesi.get("humidity");
+        long nem=Long.parseLong(nem1);
 
 
-        HavaDurumu havaDurumuObjesi=new HavaDurumu(sehir,havaDurumu,sicaklik,basinc,nem);
+        String sehir=sehirAdi;
+
+        //Gökyüzünün durumunu alıyoruz
+        JSONArray weatherDescArray=(JSONArray)current_conditionDizisiSifirinciTerimObjesi.get("weatherDesc");
+        JSONObject weatherDescObject=(JSONObject) weatherDescArray.get(0);
+
+        String havaDurumu=(String)weatherDescObject.get("value");
+
+
+        HavaDurumu havaDurumuObjesi=new HavaDurumu(sehir,havaDurumu,sicaklik,basinc,nem,cekilenSaat);
         System.out.println(havaDurumuObjesi);
+
 
 
         return havaDurumuObjesi;

@@ -26,19 +26,23 @@ public class HavaDurumu
     @Column(name = "nem_orani")
     private long nem_orani;
 
+    @Column(name = "zaman")
+    private String zaman;
+
 
     public HavaDurumu()
     {
 
     }
 
-    public HavaDurumu(String sehir, String durum, long sicaklik, long basinc, long nem_orani)
+    public HavaDurumu(String sehir, String durum, long sicaklik, long basinc, long nem_orani,String zaman)
     {
         this.sehir = sehir;
         this.durum = durum;
         this.sicaklik = sicaklik;
         this.basinc = basinc;
         this.nem_orani = nem_orani;
+        this.zaman=zaman;
     }
 
     public int getId()
@@ -64,6 +68,14 @@ public class HavaDurumu
     public String getDurum()
     {
         return durum;
+    }
+
+    public String getZaman() {
+        return zaman;
+    }
+
+    public void setZaman(String zaman) {
+        this.zaman = zaman;
     }
 
     public void setDurum(String durum)
@@ -102,8 +114,7 @@ public class HavaDurumu
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "HavaDurumu{" +
                 "id=" + id +
                 ", sehir='" + sehir + '\'' +
@@ -111,6 +122,7 @@ public class HavaDurumu
                 ", sicaklik=" + sicaklik +
                 ", basinc=" + basinc +
                 ", nem_orani=" + nem_orani +
+                ", zaman=" + zaman +
                 '}';
     }
 }

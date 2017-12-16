@@ -90,7 +90,7 @@
             <span data-toggle="counter-up" style="font-weight:bold ">${havaDurumuObjesi.nem_orani}</span>
             <p style="font-weight:bold " >NEM ORANI</p>
             <br>
-            <a href="anasayfa.html" class="btn-get-started" >Tekrar Arama Yap</a>
+            <a href="anasayfaOnline.html" class="btn-get-started" >Tekrar Arama Yap</a>
           </div>
           
           

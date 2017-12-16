@@ -7,7 +7,7 @@ public class DatabaseVeriKontrol
 {
     public static boolean databasedeMevcutmu(String sehir_adi)
     {
-        SessionFactory sessionFactory= hibernate.paketi.SessionFactorySingleton.getSessionFactory();
+        SessionFactory sessionFactory= HavaDurumuSessionFactorySingleton.getSessionFactory();
 
         Session session=sessionFactory.getCurrentSession();
 

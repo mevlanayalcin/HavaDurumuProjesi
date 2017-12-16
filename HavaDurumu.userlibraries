@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse-userlibraries>
+  <library name="Java EE 6-Java EE 6">
+    <archive path="C:/Users/Mevlana/Desktop/HavaDurumu/lib/javax.servlet.jar" />
+    <archive path="C:/Users/Mevlana/Desktop/HavaDurumu/lib/javax.jms.jar" />
+    <archive path="C:/Users/Mevlana/Desktop/HavaDurumu/lib/javax.servlet.jsp.jar" />
+    <archive path="C:/Users/Mevlana/Desktop/HavaDurumu/lib/javax.resource.jar" />
+    <archive path="C:/Users/Mevlana/Desktop/HavaDurumu/lib/javax.ejb.jar" />
+    <archive path="C:/Users/Mevlana/Desktop/HavaDurumu/lib/javax.servlet.jsp.jstl.jar" />
+  </library>
   <library name="Maven: antlr:antlr:2.7.7">
     <archive path="C:/Users/Mevlana/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar" />
   </library>
@@ -23,6 +31,9 @@
   </library>
   <library name="Maven: javax.activation:activation:1.1.1">
     <archive path="C:/Users/Mevlana/.m2/repository/javax/activation/activation/1.1.1/activation-1.1.1.jar" />
+  </library>
+  <library name="Maven: jstl:jstl:1.2">
+    <archive path="C:/Users/Mevlana/.m2/repository/jstl/jstl/1.2/jstl-1.2.jar" />
   </library>
   <library name="Maven: junit:junit:4.10">
     <archive path="C:/Users/Mevlana/.m2/repository/junit/junit/4.10/junit-4.10.jar" />

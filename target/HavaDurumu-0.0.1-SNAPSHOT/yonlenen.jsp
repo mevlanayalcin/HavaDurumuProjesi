@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Regna Bootstrap Template</title>
+  <title>HAVA DURUMU 2017</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -90,7 +90,7 @@
             <span data-toggle="counter-up" style="font-weight:bold ">${havaDurumuObjesi.nem_orani}</span>
             <p style="font-weight:bold " >NEM ORANI</p>
             <br>
-            <a href="anasayfa.html" class="btn-get-started" >Tekrar Arama Yap</a>
+            <a href="anasayfaOnline.html" class="btn-get-started" >Tekrar Arama Yap</a>
           </div>
           
           
